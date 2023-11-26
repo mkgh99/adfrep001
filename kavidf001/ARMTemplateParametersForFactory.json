@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "kavidf001"
+		},
+		"DS_Output_blobtosql_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=kavisqldbserver001.database.windows.net;Initial Catalog=kavidb001"
+		},
+		"LS_KaviBlobConnection_connectionString": {
+			"value": ""
+		},
+		"LS_KaviBlobConnection002_connectionString": {
+			"value": ""
+		},
+		"LS_KaviDatalakegen2Connection_accountKey": {
+			"value": ""
+		},
+		"LS_AzureKeyVault001_properties_typeProperties_baseUrl": {
+			"value": "https://kavikeyvault001.vault.azure.net/"
+		},
+		"LS_HttpServer001_properties_typeProperties_url": {
+			"value": "@{linkedService().BaseURl}"
+		},
+		"LS_KaviDatalakegen2Connection_properties_typeProperties_url": {
+			"value": "https://kavidlgen2001.dfs.core.windows.net/"
+		},
+		"LS_Kavi_Datalakegen2002_properties_typeProperties_url": {
+			"value": "https://kavidlgen2001.dfs.core.windows.net/"
+		}
+	}
+}
