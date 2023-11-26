@@ -1,0 +1,17 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "DS_Output_blobtosql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Studentlist"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

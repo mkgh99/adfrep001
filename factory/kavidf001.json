@@ -1,0 +1,9 @@
+{
+	"name": "kavidf001",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9e289c5b-9b00-445c-bd70-c1b6c26f614c",
+		"tenantId": "9eb1fb9d-dfbc-4e48-b9e8-9d9e31168f94"
+	}
+}

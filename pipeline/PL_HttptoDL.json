@@ -1,0 +1,108 @@
+{
+	"name": "PL_HttptoDL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_HttpInputdata",
+						"type": "DatasetReference",
+						"parameters": {
+							"BaseURL": {
+								"value": "@variables('SourceBaseURL')",
+								"type": "Expression"
+							},
+							"RelativeURL": {
+								"value": "@variables('SourceRelativeURL')",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_sub",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "SourceRelativeURL",
+					"value": "events/greatindianfestival?ref_=nav_cs_gb"
+				}
+			}
+		],
+		"variables": {
+			"SourceBaseURL": {
+				"type": "String",
+				"defaultValue": "https://www.amazon.in/"
+			},
+			"SourceRelativeURL": {
+				"type": "String",
+				"defaultValue": "gp/browse.html?node=6648217031&ref_=nav_cs_fashion"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-11-03T10:13:22Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,32 @@
+{
+	"name": "DL_MultipleOutputFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_KaviDatalakegen2Connection",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"SinkFiles": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().SinkFiles",
+					"type": "Expression"
+				},
+				"fileSystem": "refined"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
